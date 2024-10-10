@@ -1,6 +1,5 @@
 import * as THREE from "three";
-import { useControls } from "leva";
-// import { useFrame, useThree } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 // import { useRef } from "react";
 
 export default function ThreeElement() {
@@ -10,21 +9,16 @@ export default function ThreeElement() {
   // useFrame((state, delta) => {
   //   // boxRef.current.rotation.x += delta;
   //   // boxRef.current.position.y += delta;
+  //   // boxRef.current.position.x += delta;
   // });
-
-  const box = useControls({
-    roatate: { value: 0, min: -360, max: 360, step: 1 },
-  });
 
   return (
     <>
       <directionalLight position={[5, 5, 5]} />
       <mesh
-        rotation={[
-          THREE.MathUtils.degToRad(45),
-          THREE.MathUtils.degToRad(box.roatate),
-          0,
-        ]}
+        rotation={[THREE.MathUtils.degToRad(0), THREE.MathUtils.degToRad(0), 0]} // 매쉬안에 있는 박스 각도 변경
+        position={[2, 0, 0]} // 매쉬안에서 어디에 위치할지
+        scale={[1, 6, 1]} // 크기 변경
       >
         <boxGeometry />1
         <meshStandardMaterial color="blue" />

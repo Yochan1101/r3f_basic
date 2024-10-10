@@ -2,16 +2,7 @@ import { Canvas } from "@react-three/fiber";
 import "./App.css";
 import ThreeElement from "./ThreeElement";
 import { OrbitControls } from "@react-three/drei";
-import { useControls } from "leva";
 function App() {
-  const color = useControls({
-    value: "white",
-  });
-
-  const grid = useControls({
-    segment: { value: 10, min: 2, max: 100, step: 1 },
-  });
-
   return (
     <>
       <Canvas
@@ -20,17 +11,16 @@ function App() {
           fov: 75,
           near: 1,
           far: 100,
-          position: [3, 3, 0],
+          position: [5, 5, 5],
           // zoom: 100,
         }}
       >
-        <color attach={"background"} args={[color.value]} />
+        <color attach={"background"} args={["white"]} />
         <OrbitControls /> // 자유로운 회전이 가능하도록 하는 제약을 줄 수 있는
         args가 존재 문서 찾아보면됨 개발할때는 쓸일 없을듯, 사용자에게 어느
         화면은 안보여주고 싶거나 할때 사용
-        <axesHelper args={[5]} /> // xyz축이 보이도록 하는
-        <gridHelper args={[10, grid.segment]} /> // 말그대로 화면에 그리드를
-        그려줌
+        <axesHelper args={[6]} /> // xyz축이 보이도록 하는
+        <gridHelper args={[10, 10]} /> // 말그대로 화면에 그리드를 그려줌
         <ThreeElement />
       </Canvas>
     </>
